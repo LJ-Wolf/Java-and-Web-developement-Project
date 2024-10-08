@@ -5,20 +5,16 @@ import './App.css';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import RecipeDetails from './RecipeDetails';
 import {RecipesContext} from './RecipesContext'
+import {getAllRecipes} from './UserDatabase';
 
 // Main app function that handles user input, navigation between routes, and data fetching
 // It interacts with the Edamam API and manages state, session storage, and routing.
 function App() {
-  // State for storing the ingredient input from user
-  const [ingredient, setIngredient] = useState('');
-  // useLocation to get the current route's pathname
-  const { pathname } = useLocation();
-  // useNavigate for programmatically navigating between routes
-  const navigate = useNavigate();
-  // useContext to access global recipe state and recipe setter function from RecipesContext
-  const {recipes, setRecipes} = useContext(RecipesContext);
-  // State to store and manage the current search term in the app
-  const [currentSearchTerm, setCurrentSearchTerm] = useState('');
+  const [ingredient, setIngredient] = useState('');                // State for storing the ingredient input from user
+  const { pathname } = useLocation();                              // useLocation to get the current route's pathname
+  const navigate = useNavigate();                                  // useNavigate for programmatically navigating between routes
+  const {recipes, setRecipes} = useContext(RecipesContext);        // useContext to access global recipe state and recipe setter function from RecipesContext
+  const [currentSearchTerm, setCurrentSearchTerm] = useState('');  // State to store and manage the current search term in the app
   
   // A function to fetch the recipes from the proxy server (which interacts with Edamam API)
   // Stores the fetched data (recipes and search term) into session storage for persisting state between page reloads
@@ -39,6 +35,21 @@ function App() {
       setRecipes([]);
     }
   };
+
+  // Fecthing liked recipes from UserDB, updating the global recipes state, and updating the session storage states
+  const loadSavedRecipes = async () => {
+    try { 
+      const savedRecipes = await getAllRecipes();
+      setRecipes(savedRecipes);
+      sessionStorage.setItem('recipes', JSON.stringify(savedRecipes));
+      sessionStorage.setItem('searchTerm', 'Loked Recipes');
+      setCurrentSearchTerm('Liked Recipes');
+      console.log('Saved Recipes loaded!!')
+    } catch(error) {
+      console.log('Recipes could not be loaded', error);
+    }
+  };
+ 
 
   useEffect(() => {
     const storedRecipes = sessionStorage.getItem('recipes');       // storing the recipes into a global variable
@@ -65,6 +76,7 @@ function App() {
             placeholder="Enter ingredient"
           />
           <button onClick={fetchRecipes}>Search</button>        {/* Button triggers the fetchRecipes function to search for the recipes based on the user-provided ingredient*/}
+          <button onClick={loadSavedRecipes}>Liked Recipes</button>  {/* Button to load save/liked recipes*/}
         </>
       )}
       {/* Defining the Routes for application */}

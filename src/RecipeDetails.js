@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { RecipesContext } from "./RecipesContext";
+import { saveRecipe } from "./UserDatabase";
 
 // RecipeDetails component: renders the details of a single recipe
 function RecipeDetails() {
@@ -21,6 +22,16 @@ function RecipeDetails() {
     const recipe = recipes[id]; 
     console.log('Full recipe object: ', recipe);
 
+    // Just some error checking before variable is saved 
+    const handleSaveRecipe = async () => {
+        try{
+            await saveRecipe(recipe); // Variable saved
+            console.log('Recipe saved');
+        } catch (error) {
+            console.error('Failed to save recipe', error);
+        }
+    };
+
     return (
         <div>
             {/* Displaying the recipe label */}
@@ -36,6 +47,8 @@ function RecipeDetails() {
             </ul>
             {/* Displaying the recipe source */}
             <p>Source: {recipe.recipe.source}</p>
+            {/* Button to save a recipe into storage*/}
+            <button onClick={handleSaveRecipe}>Save Recipe</button>
             {/* Back button to navigate to the previous page*/}
             <button onClick={() => navigate(-1)}>Back to Search</button>
         </div>
