@@ -70,3 +70,4 @@ This section provides a brief overview of key features and technologies used:
  3. Axios: Used for making HTTP requests to the Edamam API.
  4. React Router: Manages navigation between pages (search page, details page).
  5. Session Storage: Maintains search state between pages.
+ 6. IndexedDB: A client-side, NoSQL database that provides persistent storage for user data, such as liked recipes, directly within the browser.
