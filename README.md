@@ -14,7 +14,10 @@ You will also see any lint errors in the console.
 ## node server.js
 Runs the proxy server to handle API requests securely.
 Make sure you have set up the environment variables in your .env file (explained below).
-This server runs on http://localhost:5000.
+This server runs on http://localhost:5000
+
+## npm run proxy
+Runs the proxy server metioned above
 
 ## npm run build
 Builds the app for production to the build folder.
@@ -67,6 +70,3 @@ This section provides a brief overview of key features and technologies used:
  3. Axios: Used for making HTTP requests to the Edamam API.
  4. React Router: Manages navigation between pages (search page, details page).
  5. Session Storage: Maintains search state between pages.
-
-##### License
-This project is licensed under the MIT License.
