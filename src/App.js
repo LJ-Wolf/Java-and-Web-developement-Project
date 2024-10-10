@@ -42,7 +42,7 @@ function App() {
       const savedRecipes = await getAllRecipes();
       setRecipes(savedRecipes);
       sessionStorage.setItem('recipes', JSON.stringify(savedRecipes));
-      sessionStorage.setItem('searchTerm', 'Loked Recipes');
+      sessionStorage.setItem('searchTerm', 'Liked Recipes');
       setCurrentSearchTerm('Liked Recipes');
       console.log('Saved Recipes loaded!!')
     } catch(error) {
