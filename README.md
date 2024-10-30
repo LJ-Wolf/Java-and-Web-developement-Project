@@ -44,7 +44,8 @@ Before running the app, create a .env file in the root of your project and add t
 **Searching for Recipes**
  1. Enter an ingredient into the search input field.
  2. Click the "Search" button to retrieve a list of recipes related to that ingredient.
- 3. Browse through the list and click on any recipe to view more details.
+ 3. Click the "Liked" button to retrieve a list of saved recipes
+ 4. Browse through the list and click on any recipe to view more details.
 
 ##### Viewing Recipe Details
  + Clicking on a recipe from the list will navigate to a details page showing the ingredients.
@@ -67,6 +68,4 @@ This section provides a brief overview of key features and technologies used:
  3. Axios: Used for making HTTP requests to the Edamam API.
  4. React Router: Manages navigation between pages (search page, details page).
  5. Session Storage: Maintains search state between pages.
-
-##### License
-This project is licensed under the MIT License.
+ 6. IndexedDB: To store the data on the device being used allows for offline useage
