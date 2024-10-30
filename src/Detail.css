@@ -1,0 +1,101 @@
+  /* Container styling for the recipe details section */
+.recipe-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Main heading (recipe title) styling */
+  h1 {
+    font-size: 2.5em;
+    margin: 20px 0;
+  }
+  
+  /* Image styling for recipe images */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  /* General paragraph styling */
+  p {
+    font-size: 1.1em;
+    margin: 10px 0;
+  }
+  
+  /* Button styling with hover and active effects */
+  button {
+    padding: 10px 15px;
+    font-size: 1em;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Hover effect for buttons */
+  button:hover {
+    background-color: #007BFF;
+    color: #fff;
+  }
+  
+  /* Button scaling on click */
+  button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Layout styling for section buttons */
+  .section-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  
+  /* Styling for content sections (e.g., ingredients, nutritional info) */
+  .section-content {
+    max-width: 600px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  /* Styling for lists (ingredients, nutritional info) */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    font-size: 1.1em;
+    margin: 5px 0;
+  }
+  
+  /* Responsive styling for tablets */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2em;
+    }
+  
+    button {
+      font-size: 1.2em;
+      padding: 12px 20px;
+    }
+  }
+  
+  /* Responsive styling for mobile devices */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.8em;
+    }
+  
+    button {
+      font-size: 1.1em;
+      padding: 15px 25px;
+      width: 90%;
+    }
+  }

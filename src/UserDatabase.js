@@ -5,7 +5,7 @@ const dbUser = openDB('recipeFinderDB', 1, {
     upgrade(db) {
         //create a store for recipes if it does not exist
         if (!db.objectStoreNames.contains('recipes')) {
-          db.createObjectStore('recipes', {autoIncrement: true }); // Using the autoIncrement as a unique key
+          db.createObjectStore('recipes', {keyPath: 'label' }); // Using the autoIncrement as a unique key
         }
     },
 });
@@ -14,7 +14,7 @@ const dbUser = openDB('recipeFinderDB', 1, {
 export async function saveRecipe(recipe) {
     console.log('Before saving to DB', recipe);
     const db = await dbUser;
-    await db.put('recipes', recipe); // Saving recipe 
+    await db.put('recipes', {label: recipe.label, recipe}); // Saving recipe 
     console.log('Recipe saved to Database: ', recipe);
 
 }
@@ -34,6 +34,6 @@ export async function getAllRecipes() {
 // Function to delete a recipe by label
 export async function deleteRecipe(label) {
     const db = await dbUser;
-    await db.delete('recipe', label); // Delete recipe
-    console.log("Recipe with label '${label}' deleted from the database")
+    await db.delete('recipes', label); // Delete recipe
+    console.log('Recipe with label ' + label + ' deleted from the database');
 }
